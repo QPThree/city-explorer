@@ -20,3 +20,15 @@
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+
+## Features and Implimentation
+
+Feature 1: Enter name of location and see exact latitude and longitude data
+
+Estimate of time needed to complete: 120 min
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
