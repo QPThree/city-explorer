@@ -15,11 +15,11 @@ class City extends React.Component {
     e.preventDefault();
     console.log('inside getLocation fx');
     console.log(this.state.cityToSearch);
-    let locationData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env}&q=${this.state.cityToSearch}&format=json`);
+    let locationData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${this.state.cityToSearch}&format=json`);
     this.setState({
       cityData: locationData,
     })
-    console.log(this.state.cityToSearch);
+    console.log(this.state.cityData);
   }
   handleCityInput = (e) =>{
     e.preventDefault();
