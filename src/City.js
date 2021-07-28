@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button, Card } from 'react-bootstrap';
+import { Form, Button, Card, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 
 // Testing
@@ -42,11 +42,16 @@ class City extends React.Component {
             <Button variant="primary" type="submit" onClick={this.getLocation}>Explore!</Button>
           </Form.Group>
         </Form>
-        
-        <Card>
-          {this.state.displayCity ? <Card.Header>{this.state.cityData.display_name}</Card.Header> : ''}
-          {this.state.displayCity ? <Card.Body>Latitude - {this.state.cityData.lat} <br></br> Longitude - {this.state.cityData.lon}</Card.Body> : ''}
-        </Card>
+        <Row>
+          <Col>
+            <Card>
+              {this.state.displayCity ? <Card.Header>{this.state.cityData.display_name}</Card.Header> : ''}
+              {this.state.displayCity ? <Card.Body>Latitude - {this.state.cityData.lat} <br></br> Longitude - {this.state.cityData.lon}</Card.Body> : ''}
+            </Card>
+          </Col>
+          <Col>
+          </Col>
+        </Row>
       </>
     )
   }
