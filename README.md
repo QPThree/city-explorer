@@ -13,6 +13,22 @@
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
+### Application uses:
+
+* React
+* Bootstrap
+* Axios
+
+### .env file
+
+API access key must be stored in .env file.  Ensure *.env* is added to .gitignore file prior to pushing to git.
+
+API key is accessed in components by *process.env.{variable name you used in your own .env}*
+
+.env file must be structured as:
+
+REACT_APP_{variable name of your choosing}={API key}
+
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
@@ -27,8 +43,8 @@ Feature 1: Enter name of location and see exact latitude and longitude data
 
 Estimate of time needed to complete: 120 min
 
-Start time: _____
+Start time: 1:00pm 28JUL 2021
 
-Finish time: _____
+Finish time: 2:30pm 28JUL 2021
 
-Actual time needed to complete: _____
+Actual time needed to complete: 90 min
