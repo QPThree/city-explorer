@@ -5,8 +5,7 @@ import './App.css';
 class App extends React.Component {
   render(){
     return (
-      <City 
-      title="Go Pats"/>
+      <City />
     )
   }
 }
