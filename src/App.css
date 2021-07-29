@@ -1,4 +1,39 @@
 * {
   text-align: center;
 }
+main{
+  margin-top: 5vh;
+}
+.navbar{
+  background-color: #3C6E71;
+  height: 15vh;
+}
+  .navbar h1{
+    font-family: 'Gowun Batang', serif;
+    color: #353535;
+  }
+.error{
+  color:red;
+}
+.card{
+  color:#353535;
+  
+}
+.form{
+  color: #353535;
+}
+.form :active{
+  border: red;
+}
+.button{
+  margin-top: 1vh;
 
+}
+.accordionHeader{
+  text-decoration: none;
+  color:#284B63;
+  font-weight: 400;
+}
+.mainrow{
+  margin-top: 3vh;
+}
