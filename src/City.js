@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button, Card, Row, Col } from 'react-bootstrap';
+import { Form, Button, Card, Row, Col, Accordion } from 'react-bootstrap';
 import axios from 'axios';
 import Error from './Error';
 
@@ -31,6 +31,7 @@ class City extends React.Component {
         displayError: false,
 
       })
+      console.log(locationData);
       this.getMap();
     } catch (error) {
 
@@ -43,7 +44,7 @@ class City extends React.Component {
     }
   }
   getMap = async () => {
-    let map = await axios.get(`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom={9}`);
+    let map = await axios.get(`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=13`);
     this.setState({
       cityImageSrc: map.config.url,
       displayCityMap: true,
@@ -60,23 +61,45 @@ class City extends React.Component {
   render() {
     return (
       <>
-        <Form>
+        <Form className='form'>
           <Form.Group>
             <Form.Control onChange={this.handleCityInput} type="text" placeholder="Enter City" />
-            <Button variant="primary" type="submit" onClick={this.getLocation}>Explore!</Button>
+            <Button className='button' variant="primary" type="submit" onClick={this.getLocation}>Explore!</Button>
           </Form.Group>
         </Form>
         <Row>
           <Col>
-            <Card>
-              {this.state.displayCityMap ? <Card.Img variant="top" src={this.state.cityImageSrc} /> : ''}
+            <Card className="card">
               {this.state.displayCity ? <Card.Header>{this.state.cityData.display_name}</Card.Header> : ''}
               {this.state.displayCity ? <Card.Body>Latitude - {this.state.cityData.lat} <br></br> Longitude - {this.state.cityData.lon}</Card.Body> : ''}
+              {this.state.displayCityMap ? <Card.Img variant="top" src={this.state.cityImageSrc} /> : ''}
             </Card>
           </Col>
           <Col>
-            {this.state.displayError ? <Error 
-            errorMessage = {this.state.errorMessage}/> : ''}
+            {this.state.displayError ? <Error
+              errorMessage={this.state.errorMessage} /> : ''}
+            {this.state.displayCity ? <Accordion>
+              <Card>
+                <Card.Header>
+                  <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                   Read More!
+                  </Accordion.Toggle>
+                </Card.Header>
+                <Accordion.Collapse eventKey="0">
+                  <Card.Body><a href={`https://en.wikipedia.org/wiki/${this.state.cityToSearch}`}>Wikipedia</a></Card.Body>
+                </Accordion.Collapse>
+              </Card>
+              <Card>
+                <Card.Header>
+                  <Accordion.Toggle as={Button} variant="link" eventKey="1">
+                    Click me!
+                  </Accordion.Toggle>
+                </Card.Header>
+                <Accordion.Collapse eventKey="1">
+                  <Card.Body>Hello! I'm another body</Card.Body>
+                </Accordion.Collapse>
+              </Card>
+            </Accordion> : ''}
           </Col>
         </Row>
       </>
