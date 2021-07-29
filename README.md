@@ -68,18 +68,18 @@ Estimate of time needed to complete: 90min
 
 Start time: 7:00pm 28JUL2021
 
-Finish time:
+Finish time: 8:45pm 28JUL2021
 
-Actual time needed to complete:
+Actual time needed to complete: 105min
 
 ---
 
-Feature 4: 
+Feature 4: Display Error
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 60 min
 
-Start time:
+Start time: 8:50pm 28JUl2021
 
-Finish time: 
+Finish time: 9:15pm 28JUL2021
 
-Actual time needed to complete: 
+Actual time needed to complete: 25min
