@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Button, Card, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
+import Error from './Error';
 
 // Testing
 
@@ -13,6 +14,8 @@ class City extends React.Component {
       displayCity: false,
       cityImageSrc: '',
       displayCityMap: false,
+      displayError: false,
+      errorMessage: '',
     }
   }
   getLocation = async (e) => {
@@ -20,17 +23,27 @@ class City extends React.Component {
     e.preventDefault();
     console.log('inside getLocation fx');
     console.log(this.state.cityToSearch);
-    let locationData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${this.state.cityToSearch}&format=json`);
-    this.setState({
-      cityData: locationData.data[0],
-      displayCity: true,
-      
-    })
-    this.getMap();
-    console.log(this.state.cityData);
+    try {
+      let locationData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${this.state.cityToSearch}&format=json`);
+      this.setState({
+        cityData: locationData.data[0],
+        displayCity: true,
+        displayError: false,
+
+      })
+      this.getMap();
+    } catch (error) {
+
+      this.setState({
+        displayCity: false,
+        displayCityMap: false,
+        displayError: true,
+        errorMessage: `Error: ${error.response.status}, ${error.response.data.error}`,
+      })
+    }
   }
   getMap = async () => {
-    let map = await axios.get(`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom={10}`);
+    let map = await axios.get(`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom={9}`);
     this.setState({
       cityImageSrc: map.config.url,
       displayCityMap: true,
@@ -47,7 +60,6 @@ class City extends React.Component {
   render() {
     return (
       <>
-
         <Form>
           <Form.Group>
             <Form.Control onChange={this.handleCityInput} type="text" placeholder="Enter City" />
@@ -63,6 +75,8 @@ class City extends React.Component {
             </Card>
           </Col>
           <Col>
+            {this.state.displayError ? <Error 
+            errorMessage = {this.state.errorMessage}/> : ''}
           </Col>
         </Row>
       </>
