@@ -48,3 +48,15 @@ Start time: 1:00pm 28JUL 2021
 Finish time: 2:30pm 28JUL 2021
 
 Actual time needed to complete: 90 min
+
+---
+
+Feature 2:
+
+Estimate of time needed to complete: 
+
+Start time:
+
+Finish time: 
+
+Actual time needed to complete: 
