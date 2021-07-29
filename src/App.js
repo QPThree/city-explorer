@@ -14,7 +14,6 @@ class App extends React.Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
         </Navbar>
         <main>
-
           <Container>
             <City />
           </Container>

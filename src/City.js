@@ -1,7 +1,10 @@
 import React from 'react';
-import { Form, Button, Card, Row, Col, Accordion } from 'react-bootstrap';
+import { Form, Button, Card, Row, Col, Accordion, Container} from 'react-bootstrap';
+import Tab from 'react-bootstrap/Tab'
+import Tabs from 'react-bootstrap/Tabs'
 import axios from 'axios';
 import Error from './Error';
+import CityCard from './CityCard';
 
 // Testing
 
@@ -61,28 +64,43 @@ class City extends React.Component {
   render() {
     return (
       <>
-        <Form className='form'>
-          <Form.Group>
-            <Form.Control onChange={this.handleCityInput} type="text" placeholder="Enter City" />
-            <Button className='button' variant="primary" type="submit" onClick={this.getLocation}>Explore!</Button>
-          </Form.Group>
-        </Form>
-        <Row>
+        <Tabs defaultActiveKey="form" >
+          <Tab eventKey="form" title="Search">
+            <Form className='form'>
+              <Form.Group>
+                <Form.Control onChange={this.handleCityInput} type="text" placeholder="Enter City" />
+                <Button className='button' variant="primary" type="submit" onClick={this.getLocation}>Explore!</Button>
+              </Form.Group>
+            </Form>
+          </Tab>
+          <Tab eventKey="howto" title="How To">
+            <Container>
+              Enter a city of your choosing, and select 'Explore!'
+              <br/>
+               City Explorer will return data on your city, including an image of the city map!
+            </Container>
+          </Tab>
+        </Tabs>
+
+        <Row className = "mainrow">
           <Col>
-            <Card className="card">
-              {this.state.displayCity ? <Card.Header>{this.state.cityData.display_name}</Card.Header> : ''}
-              {this.state.displayCity ? <Card.Body>Latitude - {this.state.cityData.lat} <br></br> Longitude - {this.state.cityData.lon}</Card.Body> : ''}
-              {this.state.displayCityMap ? <Card.Img variant="top" src={this.state.cityImageSrc} /> : ''}
-            </Card>
+            {this.state.displayCity ?
+              <CityCard
+                displayCity={this.state.displayCity}
+                cityData={this.state.cityData}
+                displayCityMap={this.state.displayCityMap}
+                cityImageSrc={this.state.cityImageSrc} /> : ''}
           </Col>
           <Col>
+            {/* Displays if error  */}
             {this.state.displayError ? <Error
               errorMessage={this.state.errorMessage} /> : ''}
+            {/* Displays if no error */}
             {this.state.displayCity ? <Accordion>
               <Card>
-                <Card.Header>
+                <Card.Header className='accordionHeader'>
                   <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                   Read More!
+                    <span className='accordionHeader'>Read More</span>
                   </Accordion.Toggle>
                 </Card.Header>
                 <Accordion.Collapse eventKey="0">
@@ -90,13 +108,33 @@ class City extends React.Component {
                 </Accordion.Collapse>
               </Card>
               <Card>
-                <Card.Header>
+                <Card.Header className='accordionHeader'>
                   <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                    Click me!
+                    <span className='accordionHeader'>Weather</span>
                   </Accordion.Toggle>
                 </Card.Header>
                 <Accordion.Collapse eventKey="1">
-                  <Card.Body>Hello! I'm another body</Card.Body>
+                  <Card.Body>Weather here</Card.Body>
+                </Accordion.Collapse>
+              </Card>
+              <Card>
+                <Card.Header className='accordionHeader'>
+                  <Accordion.Toggle as={Button} variant="link" eventKey="2">
+                    <span className='accordionHeader'>Movies</span>
+                  </Accordion.Toggle>
+                </Card.Header>
+                <Accordion.Collapse eventKey="2">
+                  <Card.Body>Movies here</Card.Body>
+                </Accordion.Collapse>
+              </Card>
+              <Card>
+                <Card.Header className='accordionHeader'>
+                  <Accordion.Toggle as={Button} variant="link" eventKey="3">
+                    <span className='accordionHeader'>Future Feature</span>
+                  </Accordion.Toggle>
+                </Card.Header>
+                <Accordion.Collapse eventKey="3">
+                  <Card.Body>Feature here</Card.Body>
                 </Accordion.Collapse>
               </Card>
             </Accordion> : ''}

@@ -17,6 +17,7 @@ main{
 }
 .card{
   color:#353535;
+  
 }
 .form{
   color: #353535;
@@ -27,4 +28,12 @@ main{
 .button{
   margin-top: 1vh;
 
+}
+.accordionHeader{
+  text-decoration: none;
+  color:#284B63;
+  font-weight: 400;
+}
+.mainrow{
+  margin-top: 3vh;
 }

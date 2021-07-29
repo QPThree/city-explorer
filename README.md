@@ -39,7 +39,18 @@ REACT_APP_{variable name of your choosing}={API key}
 
 ## Features and Implimentation
 
-Feature 1: Enter name of location and see exact latitude and longitude data
+Feature 1: Repo and API Keys
+
+Estimate of time needed to complete: 30min
+
+Start time: 9:40pm 27JUL2021
+
+Finish time: 9:55pm 27JUL2021
+
+Actual time needed to complete: 15min
+
+---
+Feature 2: Enter name of location and see exact latitude and longitude data
 
 Estimate of time needed to complete: 120 min
 
@@ -51,7 +62,19 @@ Actual time needed to complete: 90 min
 
 ---
 
-Feature 2:
+Feature 3: Map and CSS
+
+Estimate of time needed to complete: 90min
+
+Start time: 7:00pm 28JUL2021
+
+Finish time:
+
+Actual time needed to complete:
+
+---
+
+Feature 4: 
 
 Estimate of time needed to complete: 
 
