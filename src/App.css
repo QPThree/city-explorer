@@ -37,6 +37,9 @@ main{
 .mainrow{
   margin-top: 3vh;
 }
+.cardGroup{
+  background-image: '../src/assets/img/weather.jpg';
+}
 .weatherHeader{
   background-color: #284B63;
   color:#FFFFFF;
@@ -45,3 +48,4 @@ main{
 .weatherData {
   font-size: .7em;
 }
+
