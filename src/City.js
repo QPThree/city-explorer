@@ -60,7 +60,7 @@ class City extends React.Component {
       console.log(this.state.displayWeather);
       this.setState({
         displayWeather: false,
-        errorMessage: `Error: ${error.response.status}, ${error.response.data.error}`,
+        errorMessage: `Error: ${error.response.status}, ${error.response.data}`,
       })
     }
   }
