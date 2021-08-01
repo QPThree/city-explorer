@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Button, Card, Row, Col, Accordion, Container } from 'react-bootstrap';
 import Tab from 'react-bootstrap/Tab'
 import Tabs from 'react-bootstrap/Tabs'
+import Alert from 'react-bootstrap/Alert'
 import axios from 'axios';
 import Error from './Error';
 import CityCard from './CityCard';
@@ -59,7 +60,6 @@ class City extends React.Component {
       console.log(this.state.displayWeather);
       this.setState({
         displayWeather: false,
-        displayError: true,
         errorMessage: `Error: ${error.response.status}, ${error.response.data.error}`,
       })
     }
@@ -131,7 +131,7 @@ class City extends React.Component {
                   </Accordion.Toggle>
                 </Card.Header>
                 <Accordion.Collapse eventKey="1">
-                  <Card.Body> {this.state.displayWeather ? <Weather data={this.state.weatherData.data[0]} /> : ''}</Card.Body>
+                  <Card.Body> {this.state.displayWeather ? <Weather data={this.state.weatherData.data[0]} /> : <Alert variant="danger">{this.state.errorMessage}</Alert> }</Card.Body>
                 </Accordion.Collapse>
               </Card>
               <Card>
