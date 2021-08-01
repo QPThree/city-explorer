@@ -7,16 +7,16 @@ class Weather extends React.Component {
       return (<Table striped bordered hover size="sm">
         <thead>
           <tr>
-            <th>{obj.threeDayDates[0]}</th>
-            <th>{obj.threeDayDates[1]}</th>
-            <th>{obj.threeDayDates[2]}</th>
+            <th className = 'weatherHeader'>{new Date(obj.threeDayDates[0]).toDateString()}</th>
+            <th className = 'weatherHeader'>{new Date(obj.threeDayDates[1]).toDateString()}</th>
+            <th className = 'weatherHeader'>{new Date(obj.threeDayDates[2]).toDateString()}</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>{obj.threeDayDescription[0]}</td>
-            <td>{obj.threeDayDescription[1]}</td>
-            <td>{obj.threeDayDescription[2]}</td>
+            <td className = 'weatherData'>{obj.threeDayDescription[0]}</td>
+            <td className = 'weatherData'>{obj.threeDayDescription[1]}</td>
+            <td className = 'weatherData'>{obj.threeDayDescription[2]}</td>
           </tr>
         </tbody>
       </Table>)
