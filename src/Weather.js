@@ -3,26 +3,25 @@ import Table from 'react-bootstrap/Table';
 
 
 class Weather extends React.Component {
-  displayData = (obj) => {
-    console.log(obj);
-    console.log(obj.threeDayDates[0]);
-    return (<Table striped bordered hover size="sm">
-      <thead>
-        <tr>
-          <th>{obj.threeDayDates[0]}</th>
-          <th>{obj.threeDayDates[1]}</th>
-          <th>{obj.threeDayDates[2]}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{obj.threeDayDescription[0]}</td>
-          <td>{obj.threeDayDescription[1]}</td>
-          <td>{obj.threeDayDescription[2]}</td>
-        </tr>
-      </tbody>
-    </Table>)
+  displayData = (obj) => {  
+      return (<Table striped bordered hover size="sm">
+        <thead>
+          <tr>
+            <th>{obj.threeDayDates[0]}</th>
+            <th>{obj.threeDayDates[1]}</th>
+            <th>{obj.threeDayDates[2]}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{obj.threeDayDescription[0]}</td>
+            <td>{obj.threeDayDescription[1]}</td>
+            <td>{obj.threeDayDescription[2]}</td>
+          </tr>
+        </tbody>
+      </Table>)
   }
+
   render() {
 
     return (

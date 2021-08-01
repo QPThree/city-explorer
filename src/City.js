@@ -35,7 +35,6 @@ class City extends React.Component {
         displayCity: true,
         displayError: false,
       })
-
       this.getWeather();
       this.getMap();
     } catch (error) {
@@ -51,14 +50,17 @@ class City extends React.Component {
   getWeather = async () => {
     try {
       let weatherDataFromServer = await axios.get(`http://localhost:3001/weather?searchQuery=${this.state.cityToSearch}`);
+      console.log('weather data from server ', weatherDataFromServer);
       this.setState({
         weatherData: weatherDataFromServer,
         displayWeather: true,
       })
     } catch (error) {
+      console.log(this.state.displayWeather);
       this.setState({
         displayWeather: false,
-
+        displayError: true,
+        errorMessage: `Error: ${error.response.status}, ${error.response.data.error}`,
       })
     }
   }
