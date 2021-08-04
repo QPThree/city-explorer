@@ -1,10 +1,11 @@
 import React from 'react';
+import Alert from 'react-bootstrap/Alert';
 
 
 class Error extends React.Component {
   render(){
     return(
-      <h3 className = 'error'>{this.props.errorMessage}</h3>
+      <Alert variant="danger">{this.props.errorMessage}</Alert>
     );
   }
 }
