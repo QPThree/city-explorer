@@ -58,7 +58,7 @@ class City extends React.Component {
   }
   getWeather = async () => {
     try {
-      let weatherDataFromServer = await axios.get(`https://qp3-city-explorer-server.herokuapp.com/weather?searchQuery=${this.state.cityToSearch}&lat=${this.state.lat}&lon=${this.state.lon}`);
+      let weatherDataFromServer = await axios.get(`${process.env.REACT_APP_HEROKU_SERVER_URL}/weather?searchQuery=${this.state.cityToSearch}&lat=${this.state.lat}&lon=${this.state.lon}`);
       this.setState({
         weatherData: weatherDataFromServer,
         displayWeather: true,
@@ -81,7 +81,7 @@ class City extends React.Component {
   getMovies = async () =>{
     try {
       console.log('trying to get movies from front end');
-      let movieData = await axios.get(`https://qp3-city-explorer-server.herokuapp.com/movies?searchQuery=${this.state.cityToSearch}`);
+      let movieData = await axios.get(`${process.env.REACT_APP_HEROKU_SERVER_URL}/movies?searchQuery=${this.state.cityToSearch}`);
       console.log('movie data from server ', movieData);
       this.setState({
         movieData: movieData,
