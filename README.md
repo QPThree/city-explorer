@@ -83,3 +83,15 @@ Start time: 8:50pm 28JUl2021
 Finish time: 9:15pm 28JUL2021
 
 Actual time needed to complete: 25min
+
+---
+
+Feature 5: Display Weather from API
+
+Estimate of time needed to complete: 60 min
+
+Start time: 8:45pm 03AUG2021
+
+Finish time: 10:45pm 03AUG2021
+
+Actual time needed to complete: 120min

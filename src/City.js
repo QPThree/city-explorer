@@ -7,6 +7,7 @@ import axios from 'axios';
 import Error from './Error';
 import CityCard from './CityCard';
 import Weather from './Weather';
+import Movies from './Movies';
 
 // Testing
 
@@ -16,6 +17,8 @@ class City extends React.Component {
     this.state = {
       cityToSearch: '',
       cityData: {},
+      lat: '',
+      lon:'',
       displayCity: false,
       cityImageSrc: '',
       displayCityMap: false,
@@ -23,6 +26,8 @@ class City extends React.Component {
       errorMessage: '',
       weatherData: {},
       displayWeather: false,
+      movieData: {},
+      displayMovies: false,
     }
   }
   getLocation = async (e) => {
@@ -33,11 +38,14 @@ class City extends React.Component {
 
       this.setState({
         cityData: locationData.data[0],
+        lat: locationData.data[0].lat,
+        lon: locationData.data[0].lon,
         displayCity: true,
         displayError: false,
       })
       this.getWeather();
       this.getMap();
+      this.getMovies();
     } catch (error) {
 
       this.setState({
@@ -50,14 +58,13 @@ class City extends React.Component {
   }
   getWeather = async () => {
     try {
-      let weatherDataFromServer = await axios.get(`http://localhost:3001/weather?searchQuery=${this.state.cityToSearch}`);
+      let weatherDataFromServer = await axios.get(`http://localhost:3001/weather?searchQuery=${this.state.cityToSearch}&lat=${this.state.lat}&lon=${this.state.lon}`);
       console.log('weather data from server ', weatherDataFromServer);
       this.setState({
         weatherData: weatherDataFromServer,
         displayWeather: true,
       })
     } catch (error) {
-      console.log(this.state.displayWeather);
       this.setState({
         displayWeather: false,
         errorMessage: `Error: ${error.response.status}, ${error.response.data}`,
@@ -71,6 +78,23 @@ class City extends React.Component {
       displayCityMap: true,
     });
   }
+
+  getMovies = async () =>{
+    try {
+      let movieData = await axios.get(`http://localhost:3001/movies?searchQuery=${this.state.cityToSearch}`);
+      console.log('movie data from server ', movieData);
+      this.setState({
+        movieData: movieData,
+        displayMovies: true,
+      })
+    } catch (error) {
+      this.setState({
+        displayMovies: false,
+        errorMessage: `Error: ${error.response.status}, ${error.response.data}`,
+      })
+    }
+  }
+  
   handleCityInput = (e) => {
     e.preventDefault();
     this.setState({
@@ -141,7 +165,10 @@ class City extends React.Component {
                   </Accordion.Toggle>
                 </Card.Header>
                 <Accordion.Collapse eventKey="2">
-                  <Card.Body>Movies here</Card.Body>
+                  <Card.Body>{this.state.displayMovies? 
+                  <Movies data = {this.state.movieData} />:
+                  <Error
+                  errorMessage={this.state.errorMessage} />}</Card.Body>
                 </Accordion.Collapse>
               </Card>
               <Card>

@@ -7,13 +7,12 @@ import weatherImage3 from './assets/img/weather3.jpg'
 class Weather extends React.Component {
   displayData = (obj) => {
     return (
-      
         <CardGroup className='shadow-sm p-3 mb-5 bg-white rounded'>
-          <Card className='weatherCard '>
+          <Card>
             
             <Card.Body>
-              <Card.Title className='weatherHeader'>{new Date(obj.threeDayDates[0]).toDateString()}</Card.Title>
-              <Card.Text className='weatherData'>
+              <Card.Title>{new Date(obj.threeDayDates[0]).toDateString()}</Card.Title>
+              <Card.Text>
                 {obj.threeDayDescription[0]}
               </Card.Text>
             </Card.Body>
