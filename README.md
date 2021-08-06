@@ -1,11 +1,13 @@
 # City Explorer
 
 **Author**: Quentin P Young III
-**Version**: 0.0.0
+**Version**: 2.0.0
 [**Netlify Deployment**](https://romantic-pasteur-01ecef.netlify.app/)
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
+
+v2.0
+Site is now deployed and connected to API's via deployed server. Requests can now be made for movie and weather data from the city searched. All data comes from live API's.
 
 ## Getting Started
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
@@ -13,11 +15,12 @@
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
-### Application uses:
+### Technologies uses:
 
 * React
 * Bootstrap
 * Axios
+* Express
 
 ### .env file
 
@@ -95,3 +98,17 @@ Start time: 8:45pm 03AUG2021
 Finish time: 10:45pm 03AUG2021
 
 Actual time needed to complete: 120min
+
+---
+
+Feature 4:Get movies about City Searched
+
+Estimate of time needed to complete: 120min
+
+Start time: 6:50pm 04AUG2021
+
+Finish time: 8:30pm 04AUG2021
+
+Actual time needed to complete: 100min
+
+---
