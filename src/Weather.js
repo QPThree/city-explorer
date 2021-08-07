@@ -1,6 +1,5 @@
 import React from 'react';
 import WeatherDay from './WeatherDay';
-import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import weatherImage0 from './assets/img/weather.jpg'
 import weatherImage1 from './assets/img/weather2.jpg'

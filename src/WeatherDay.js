@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import { ArrowRight } from 'react-bootstrap-icons';
 
 class WeatherDay extends React.Component {
 
