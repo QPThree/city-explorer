@@ -1,62 +1,47 @@
 import React from 'react';
+import WeatherDay from './WeatherDay';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
-import weatherImage1 from './assets/img/weather.jpg'
-import weatherImage2 from './assets/img/weather2.jpg'
-import weatherImage3 from './assets/img/weather3.jpg'
+import weatherImage0 from './assets/img/weather.jpg'
+import weatherImage1 from './assets/img/weather2.jpg'
+import weatherImage2 from './assets/img/weather3.jpg'
 class Weather extends React.Component {
-  displayData = (obj) => {
-    return (
-        <CardGroup className='shadow-sm p-3 mb-5 bg-white rounded'>
-          <Card>
-            
-            <Card.Body>
-              <Card.Title>{new Date(obj.threeDayDates[0]).toDateString()}</Card.Title>
-              <Card.Text>
-                {obj.threeDayDescription[0]}
-              </Card.Text>
-            </Card.Body>
-            <Card.Img variant="bottom" src={weatherImage1} height='60%'/>
-            <Card.Footer>
-              <small className="text-muted"></small>
-            </Card.Footer>
-          </Card>
-          <Card>
-            
-            <Card.Body>
-              <Card.Title className='weatherHeader'>{new Date(obj.threeDayDates[1]).toDateString()}</Card.Title>
-              <Card.Text className='weatherData'>
-                {obj.threeDayDescription[1]}
-              </Card.Text>
-            </Card.Body>
-            <Card.Img variant="top" src={weatherImage2} height='60%' />
-            <Card.Footer>
-
-            </Card.Footer>
-          </Card>
-          <Card>
-            
-            <Card.Body>
-              <Card.Title className='weatherHeader'>{new Date(obj.threeDayDates[2]).toDateString()}</Card.Title>
-              <Card.Text className='weatherData'>
-                {obj.threeDayDescription[2]}
-              </Card.Text>
-            </Card.Body>
-            <Card.Img variant="top" src={weatherImage3} height='60%'/>
-            <Card.Footer>
-
-            </Card.Footer>
-          </Card>
-        </CardGroup>)
+  constructor(props) {
+    super(props);
+    this.state = {
+      weatherImageArr: [weatherImage0, weatherImage1, weatherImage2],
+    }
   }
 
-        render() {
+  makeWeatherDayCards(obj) {
+    let arr = [];
+    for (let i = 0; i < 3; i++) {
+      arr.push(<WeatherDay
+        threeDayDates={obj.threeDayDates[i]}
+        threeDayDescription={obj.threeDayDescription[i]}
+        weatherImage={this.state.weatherImageArr[i]}
+        highs={obj.highs[i]}
+        lows={obj.lows[i]} />)
+    }
+    return arr;
+  }
+
+  displayData = (obj) => {
+    return (
+      <CardGroup className='shadow-sm p-3 mb-5 bg-white rounded'>
+        {this.makeWeatherDayCards(obj)}
+      </CardGroup>)
+  }
+
+  render() {
 
     return (
-        <h2>{this.displayData(this.props.data)}</h2>
-        )
+      <>
+        {this.displayData(this.props.data)}
+      </>
+    )
   }
 }
 
-        export default Weather;
+export default Weather;
 //this.props.data.data[0].threeDayDates[0]

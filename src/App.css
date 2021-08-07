@@ -1,8 +1,11 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
 * {
   text-align: center;
+  
 }
 main{
   margin-top: 5vh;
+  height: 100vh;
 }
 .navbar{
   background-color: #3C6E71;
@@ -11,6 +14,8 @@ main{
   .navbar h1{
     font-family: 'Gowun Batang', serif;
     color: #353535;
+    padding: 1vw;
+    border: 1px solid 
   }
 .error{
   color:red;
@@ -21,6 +26,7 @@ main{
 }
 .form{
   color: #353535;
+  border-bottom: #3C6E71 2px solid;
 }
 .form :active{
   border: red;

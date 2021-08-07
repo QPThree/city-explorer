@@ -112,15 +112,3 @@ Finish time: 8:30pm 04AUG2021
 Actual time needed to complete: 100min
 
 ---
-
-Feature 5: Modularize Codebase
-
-Estimate of time needed to complete:
-
-Start time:
-
-Finish time:
-
-Actual time needed to complete:
-
----
