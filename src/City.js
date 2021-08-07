@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button, Card, Row, Col, Accordion, Container } from 'react-bootstrap';
+import { Form, Button, Card, Container } from 'react-bootstrap';
 import Tab from 'react-bootstrap/Tab'
 import Tabs from 'react-bootstrap/Tabs'
 import Alert from 'react-bootstrap/Alert'
@@ -18,7 +18,7 @@ class City extends React.Component {
       cityToSearch: '',
       cityData: {},
       lat: '',
-      lon:'',
+      lon: '',
       displayCity: false,
       cityImageSrc: '',
       displayCityMap: false,
@@ -78,7 +78,7 @@ class City extends React.Component {
     });
   }
 
-  getMovies = async () =>{
+  getMovies = async () => {
     try {
       console.log('trying to get movies from front end');
       let movieData = await axios.get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/movies?searchQuery=${this.state.cityToSearch}`);
@@ -94,7 +94,7 @@ class City extends React.Component {
       })
     }
   }
-  
+
   handleCityInput = (e) => {
     e.preventDefault();
     this.setState({
@@ -105,85 +105,41 @@ class City extends React.Component {
   render() {
     return (
       <>
-        <Tabs defaultActiveKey="form" >
-          <Tab eventKey="form" title="Search">
             <Form className='form'>
               <Form.Group>
                 <Form.Control onChange={this.handleCityInput} type="text" placeholder="Enter City" />
-                <Button className='button' variant="primary" type="submit" onClick={this.getLocation}>Explore!</Button>
+                <Button className='button' variant="primary" type="submit" onClick={this.getLocation}><i class="bi bi-binoculars"></i>Explore!</Button>
               </Form.Group>
             </Form>
-          </Tab>
-          <Tab eventKey="howto" title="How To">
-            <Container>
-              Enter a city of your choosing, and select 'Explore!'
-              <br />
-              City Explorer will return data on your city, including an image of the city map!
-            </Container>
-          </Tab>
-        </Tabs>
-
-        <Row className="mainrow">
-          <Col>
-            {this.state.displayCity ?
-              <CityCard
-                displayCity={this.state.displayCity}
-                cityData={this.state.cityData}
-                displayCityMap={this.state.displayCityMap}
-                cityImageSrc={this.state.cityImageSrc} /> : ''}
-          </Col>
-          <Col>
-            {/* Displays if error  */}
-            {this.state.displayError ? <Error
+         
+        
+        {this.state.displayError ? <Error
               errorMessage={this.state.errorMessage} /> : ''}
-            {/* Displays if no error */}
-            {this.state.displayCity ? <Accordion>
-              <Card>
-                <Card.Header className='accordionHeader'>
-                  <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                    <span className='accordionHeader'>Read More</span>
-                  </Accordion.Toggle>
-                </Card.Header>
-                <Accordion.Collapse eventKey="0">
-                  <Card.Body><a href={`https://en.wikipedia.org/wiki/${this.state.cityToSearch}`}>Wikipedia</a></Card.Body>
-                </Accordion.Collapse>
-              </Card>
-              <Card>
-                <Card.Header className='accordionHeader'>
-                  <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                    <span className='accordionHeader'>Weather</span>
-                  </Accordion.Toggle>
-                </Card.Header>
-                <Accordion.Collapse eventKey="1">
-                  <Card.Body> {this.state.displayWeather ? <Weather data={this.state.weatherData.data[0]} /> : <Alert variant="danger">{this.state.errorMessage}</Alert> }</Card.Body>
-                </Accordion.Collapse>
-              </Card>
-              <Card>
-                <Card.Header className='accordionHeader'>
-                  <Accordion.Toggle as={Button} variant="link" eventKey="2">
-                    <span className='accordionHeader'>Movies</span>
-                  </Accordion.Toggle>
-                </Card.Header>
-                <Accordion.Collapse eventKey="2">
-                  <Card.Body>{this.state.displayMovies? 
-                  <Movies data = {this.state.movieData} />:
-                  <Error
+        {this.state.displayCityMap ?       
+        <Tabs defaultActiveKey="map" >
+          <Tab eventKey="map" title="Map">
+            {this.state.displayCity ?
+              <Container>
+                <CityCard
+                  displayCity={this.state.displayCity}
+                  cityData={this.state.cityData}
+                  displayCityMap={this.state.displayCityMap}
+                  cityImageSrc={this.state.cityImageSrc} />
+                <a href={`https://en.wikipedia.org/wiki/${this.state.cityToSearch}`}>Learn More</a>
+              </Container>
+              : ''}
+          </Tab>
+          <Tab eventKey="weather" title="Weather">
+            <Card.Body> {this.state.displayWeather ? <Weather data={this.state.weatherData.data[0]} /> : <Alert variant="danger">{this.state.errorMessage}</Alert>}</Card.Body>
+          </Tab>
+          <Tab eventKey="movies" title="Movies">
+            <Card.Body>
+              {this.state.displayMovies ?
+                <Movies data={this.state.movieData} /> :
+                <Error
                   errorMessage={this.state.errorMessage} />}</Card.Body>
-                </Accordion.Collapse>
-              </Card>
-              <Card>
-                <Card.Header className='accordionHeader'>
-                  <Accordion.Toggle as={Button} variant="link" eventKey="3">
-                    <span className='accordionHeader'>Future Feature</span>
-                  </Accordion.Toggle>
-                </Card.Header>
-                <Accordion.Collapse eventKey="3">
-                  <Card.Body>Feature here</Card.Body>
-                </Accordion.Collapse>
-              </Card>
-            </Accordion> : ''}
-          </Col>
-        </Row>
+          </Tab>
+        </Tabs> : ''}
       </>
     )
   }

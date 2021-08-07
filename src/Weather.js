@@ -6,38 +6,42 @@ import weatherImage0 from './assets/img/weather.jpg'
 import weatherImage1 from './assets/img/weather2.jpg'
 import weatherImage2 from './assets/img/weather3.jpg'
 class Weather extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       weatherImageArr: [weatherImage0, weatherImage1, weatherImage2],
     }
   }
 
-  makeWeatherDayCards (obj){
+  makeWeatherDayCards(obj) {
     let arr = [];
-    for (let i = 0; i < 3; i++){
-      arr.push( <WeatherDay 
-      threeDayDates = {obj.threeDayDates[i]}
-      threeDayDescription = {obj.threeDayDescription[i]}
-      weatherImage = {this.state.weatherImageArr[i]}/>)
+    for (let i = 0; i < 3; i++) {
+      arr.push(<WeatherDay
+        threeDayDates={obj.threeDayDates[i]}
+        threeDayDescription={obj.threeDayDescription[i]}
+        weatherImage={this.state.weatherImageArr[i]}
+        highs={obj.highs[i]}
+        lows={obj.lows[i]} />)
     }
     return arr;
   }
-  
+
   displayData = (obj) => {
     return (
-        <CardGroup className='shadow-sm p-3 mb-5 bg-white rounded'>
-          {this.makeWeatherDayCards(obj)}
-        </CardGroup>)
+      <CardGroup className='shadow-sm p-3 mb-5 bg-white rounded'>
+        {this.makeWeatherDayCards(obj)}
+      </CardGroup>)
   }
 
-        render() {
-   
+  render() {
+
     return (
-        <h2>{this.displayData(this.props.data)}</h2>
-        )
+      <>
+        {this.displayData(this.props.data)}
+      </>
+    )
   }
 }
 
-        export default Weather;
+export default Weather;
 //this.props.data.data[0].threeDayDates[0]
