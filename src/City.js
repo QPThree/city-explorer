@@ -80,9 +80,7 @@ class City extends React.Component {
 
   getMovies = async () => {
     try {
-      console.log('trying to get movies from front end');
       let movieData = await axios.get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/movies?searchQuery=${this.state.cityToSearch}`);
-      console.log('movie data from server ', movieData);
       this.setState({
         movieData: movieData,
         displayMovies: true,

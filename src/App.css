@@ -4,11 +4,13 @@
   
 }
 main{
-  margin-top: 5vh;
-  height: 100vh;
+  padding-top: 5vh;
+  height: 200vh;
+  background-image: -webkit-linear-gradient(90deg, #FFFFFF 93%, #284B63 40%);
 }
 .navbar{
-  background-color: #3C6E71;
+  
+  background-image: -webkit-linear-gradient(-80deg, #FFFFFF 50%, #3C6E71 50%);
   height: 15vh;
 }
   .navbar h1{
@@ -54,4 +56,3 @@ main{
 .weatherData {
   font-size: .7em;
 }
-
