@@ -27,7 +27,7 @@ class CustomNavbar extends React.Component {
         <Navbar expand="lg" className="d-flex justify-content-between navbar" >
           <Navbar.Brand href="#home"><h1>City Explorer <i class="bi bi-tree"></i></h1></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Button variant="light" onClick={this.handleHowTo}>How To <i class="bi bi-chat-right-dots"></i></Button>
+          <Button variant="light" onClick={this.handleHowTo}><i class="bi bi-question-circle"></i></Button>
         </Navbar>
         <Modal
           show={this.state.displayHowTo}

@@ -10,7 +10,7 @@ class CityCard extends React.Component {
   }
   render() {
     return (
-      <Card className='card shadow-lg p-3 mb-5 bg-white rounded' border="dark">
+      <Card className='card shadow-lg p-3 mb-5 mt-3 bg-white rounded' border="dark">
         {this.props.displayCity ? <Card.Header><i class="bi bi-map"></i> {this.props.cityData.display_name}</Card.Header> : ''}
         {this.props.displayCity ? <Card.Body>Latitude - {this.props.cityData.lat} <br></br> Longitude - {this.props.cityData.lon}</Card.Body> : ''}
         {this.props.displayCityMap ? <Card.Img variant="top" src={this.props.cityImageSrc} /> : ''}
