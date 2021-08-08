@@ -14,7 +14,7 @@ class WeatherDay extends React.Component {
     let rainRegex = /rain/i;
     let sunRegex = /sun/i;
     let arr = this.props.threeDayDescription.split(' ');
-    arr.map(word => {
+    arr.forEach(word => {
       if (cloudRegex.test(word)) {
         console.log(word);
         this.setState({
