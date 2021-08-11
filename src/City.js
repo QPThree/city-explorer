@@ -43,6 +43,7 @@ class City extends React.Component {
         displayCity: true,
         displayError: false,
       })
+      console.log('lat:', this.state.lat);
       this.getWeather();
       this.getMap();
       this.getMovies();
