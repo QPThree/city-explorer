@@ -13,12 +13,12 @@ class Weather extends React.Component {
   }
 
   makeWeatherDayCards(obj) {
-    console.log(obj);
+    console.log('obj:',obj);
     let arr = [];
     for (let i = 0; i < 3; i++) {
       arr.push(<WeatherDay
-        threeDayDates={obj.time}
-        threeDayDescription={obj.forecast}
+        threeDayDates={obj[i].time}
+        threeDayDescription={obj[i].forecast}
         weatherImage={this.state.weatherImageArr[i]}
         // highs={obj.highs[i]}
         // lows={obj.lows[i]}

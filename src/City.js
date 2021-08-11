@@ -129,7 +129,7 @@ class City extends React.Component {
               : ''}
           </Tab>
           <Tab eventKey="weather" title="Weather">
-            <Card.Body> {this.state.displayWeather ? <Weather data={this.state.weatherData.data[0]} /> : <Alert variant="danger">{this.state.errorMessage}</Alert>}</Card.Body>
+            <Card.Body> {this.state.displayWeather ? <Weather data={this.state.weatherData.data} /> : <Alert variant="danger">{this.state.errorMessage}</Alert>}</Card.Body>
           </Tab>
           <Tab eventKey="movies" title="Movies">
             <Card.Body>
