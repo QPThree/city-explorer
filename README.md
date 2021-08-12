@@ -6,6 +6,9 @@
 
 ## Overview
 
+v3.0 Data from Yelp is now retrieved on City search. 
+
+### Previous Versions
 v2.0
 Site is now deployed and connected to API's via deployed server. Requests can now be made for movie and weather data from the city searched. All data comes from live API's.
 
@@ -15,7 +18,7 @@ Site is now deployed and connected to API's via deployed server. Requests can no
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
-### Technologies uses:
+### Technologies used:
 
 * React
 * Bootstrap
