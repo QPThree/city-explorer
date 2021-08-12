@@ -56,3 +56,12 @@ main{
 .weatherData {
   font-size: .7em;
 }
+
+.restaurantCard{
+  margin-bottom: 5vh;
+
+}
+.restaurantCard #title{
+  color:#284B63;
+  font-size: 1.5em;
+}
