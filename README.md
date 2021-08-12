@@ -112,3 +112,15 @@ Finish time: 8:30pm 04AUG2021
 Actual time needed to complete: 100min
 
 ---
+
+Feature 5:Get Restaurant Data from Yelp
+
+Estimate of time needed to complete: 120min
+
+Start time: 6:50pm 11AUG2021
+
+Finish time: 8:45pm 11AUG2021
+
+Actual time needed to complete: 115min
+
+---
