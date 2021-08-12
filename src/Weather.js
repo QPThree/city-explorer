@@ -13,7 +13,6 @@ class Weather extends React.Component {
   }
 
   makeWeatherDayCards(obj) {
-    console.log('obj:',obj);
     let arr = [];
     for (let i = 0; i < 3; i++) {
       arr.push(<WeatherDay

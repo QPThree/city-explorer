@@ -8,6 +8,7 @@ import Error from './Error';
 import CityCard from './CityCard';
 import Weather from './Weather';
 import Movies from './Movies';
+import Restaurants from './Restaurants';
 
 // Testing
 
@@ -28,6 +29,8 @@ class City extends React.Component {
       displayWeather: false,
       movieData: {},
       displayMovies: false,
+      restaurantData: {},
+      displayRestaurants: false,
     }
   }
   getLocation = async (e) => {
@@ -43,10 +46,10 @@ class City extends React.Component {
         displayCity: true,
         displayError: false,
       })
-      console.log('lat:', this.state.lat);
       this.getWeather();
       this.getMap();
       this.getMovies();
+      this.getRestaurants();
     } catch (error) {
 
       this.setState({
@@ -89,6 +92,21 @@ class City extends React.Component {
     } catch (error) {
       this.setState({
         displayMovies: false,
+        errorMessage: `Error: ${error.response.status}, ${error.response.data}`,
+      })
+    }
+  }
+
+  getRestaurants = async () => {
+    try {
+      let restaurantData = await axios.get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/yelp?searchQuery=${this.state.cityToSearch}`);
+      this.setState({
+        restaurantData: restaurantData,
+        displayRestaurants: true,
+      })
+    } catch (error) {
+      this.setState({
+        displayRestaurants: false,
         errorMessage: `Error: ${error.response.status}, ${error.response.data}`,
       })
     }
@@ -137,6 +155,10 @@ class City extends React.Component {
                 <Movies data={this.state.movieData} /> :
                 <Error
                   errorMessage={this.state.errorMessage} />}</Card.Body>
+          </Tab>
+          <Tab eventKey="restaurants" title="Restaurants">
+          <Restaurants 
+          data = {this.state.restaurantData}/>
           </Tab>
         </Tabs> : ''}
       </>
